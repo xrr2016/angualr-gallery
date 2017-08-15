@@ -1,3 +1,11 @@
-<p>
-  image works!
-</p>
+<div class="row">
+  <div class="col-sm-12 caption">
+    <span>{{ image.caption }}</span>
+    <a routerLink="/" class="btn btn-primary pull-right">Back</a>
+  </div>
+  <br>
+  <div class="col-sm-12" style="padding: 0;">
+    <div [ngStyle]="{'background-image': 'url('+ image.url +')'}" 
+     class="image-container"></div>
+  </div>
+</div>
