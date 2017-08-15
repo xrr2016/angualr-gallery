@@ -1,10 +1,16 @@
 <h2>{{ title }}</h2>
 <div class="row">
-  <ul id="thumbnailsList" class="thumbnails-list">
-    <li class="col-xs-6 col-sm-3" *ngFor="let img of visiableImages">
-      <a href="" class="thumbnail">
-        <img class="img-responsive tn" src="{{ img.url }}" alt="{{ img.caption }}">
-      </a>
+  <button class="btn btn-info" [class.active]="filterBy === 'all'"
+  (click)="filterBy='all'">All</button>
+  <button class="btn btn-info" [class.active]="filterBy === 'boats'"
+  (click)="filterBy='boats'">Boats</button>
+  <button class="btn btn-info" [class.active]="filterBy === 'camping'"
+  (click)="filterBy='camping'">Camping</button>
+  <button class="btn btn-info" [class.active]="filterBy === 'library'"
+  (click)="filterBy='library'">Library</button>
+  <ul id="thumbnailsList">
+    <li *ngFor="let img of (visiableImages | imageFilter:filterBy)">
+      <img class="img-responsive tn" src="{{ img.url }}" alt="{{ img.caption }}">
     </li>
   </ul>
 </div>
